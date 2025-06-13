@@ -1,5 +1,7 @@
 package br.com.gymleader.controller;
 
+import br.com.gymleader.converter.PokemonConverter;
+import br.com.gymleader.dto.PokemonDTO;
 import br.com.gymleader.model.PaginatedResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,15 +15,18 @@ import java.util.List;
 public class PokemonController {
 
     private final PokemonAPI pokemonService;
+    private final PokemonConverter pokemonConverter;
 
     @Autowired
-    public PokemonController(PokemonAPI pokemonService) {
+    public PokemonController(PokemonAPI pokemonService, PokemonConverter pokemonConverter) {
         this.pokemonService = pokemonService;
+        this.pokemonConverter = pokemonConverter;
     }
 
     @GetMapping("/{idOrName}")
-    public Pokemon getPokemon(@PathVariable String idOrName) {
-        return pokemonService.getPokemonByIdOrName(idOrName);
+    public PokemonDTO getPokemon(@PathVariable String idOrName) {
+        Pokemon pokemon = pokemonService.getPokemonByIdOrName(idOrName);
+        return pokemonConverter.toDto(pokemon);
     }
 
     @GetMapping("/generation/{generationId}")
