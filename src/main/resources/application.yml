@@ -1,0 +1,20 @@
+server:
+  port: 8081
+
+#spring:
+#  application:
+#    name: gymleader-api
+#  datasource:
+#    url: jdbc:postgresql://localhost:5432/pokedex
+#    username: user
+#    password: pass
+#  cloud:
+#    loadbalancer:
+#      ribbon:
+#        enabled: false
+#    discovery:
+#      client:
+#        simple:
+#          instances:
+#            comparador-service:
+#              - uri: http://localhost:8082
