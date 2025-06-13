@@ -9,7 +9,6 @@ public class PaginatedResponse<T> {
     private long totalItems;
     private Integer nextPage;
 
-    // Construtor
     public PaginatedResponse(List<T> data, int currentPage, int pageSize, long totalItems) {
         this.data = data;
         this.currentPage = currentPage;
@@ -18,7 +17,6 @@ public class PaginatedResponse<T> {
         this.nextPage = (currentPage * pageSize) < totalItems ? currentPage + 1 : null;
     }
 
-    // Getters
     public List<T> getData() {
         return data;
     }
